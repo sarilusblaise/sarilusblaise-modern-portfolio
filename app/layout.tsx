@@ -1,6 +1,7 @@
 import "@/app/ui/globals.css";
 import {inter} from '@/app/ui/fonts'
 import { Metadata } from "next";
+import { Navigation } from "@/app/ui/home/navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -58,6 +59,7 @@ export default function RootLayout({
       <body
         className="bg-black"
       >
+        <Navigation/>
         {children}
       </body>
     </html>
