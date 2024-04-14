@@ -1,6 +1,6 @@
 
 import React from 'react'
-import ProjectCard from '@/app/ui/projects/projectCard'
+import ProjectCards from '@/app/ui/projects/projectCards'
 
 export default function ProjectsPage() {
   return (
@@ -12,14 +12,7 @@ export default function ProjectsPage() {
       
       <div className="  w-screen h-px animate-glow  bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0"></div>
       
-      <div className='grid grid-cols-1 gap-8 place-content-start place-items-start md:grid-cols-2'>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-      </div>
+      <ProjectCards/>
       
     </section>
   )

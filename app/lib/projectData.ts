@@ -1,4 +1,4 @@
-type ProjectInfo = {name:string, description:string, code:string, demo:string, stacks:string[]}
+export type ProjectInfo = {name:string, description:string, code:string, demo:string, stacks:string[]}
 
 export const projectsData:ProjectInfo[] = [
     {
