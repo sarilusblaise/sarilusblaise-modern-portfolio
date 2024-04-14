@@ -11,8 +11,8 @@ gsap.registerPlugin(useGSAP,TextPlugin);
 export default function AboutPage() {
   return (
     <section className='flex flex-col items-center justify-center gap-16 p-4 sm:p-8 md:p-16 mt-32'>
-      <div className='flex flex-col justify-center items-center text-center'>
-        <h1 className='text-zinc-500 text-[3rem] sm:text-[4rem] md:text-[5rem] text-center font-bold '>About Me</h1>
+      <div className='flex flex-col w-full'>
+        <h1 className='text-zinc-500 text-[3rem] sm:text-[4rem] md:text-[5rem]  font-bold '>About Me</h1>
       
       <Typewriter/>
       </div>
