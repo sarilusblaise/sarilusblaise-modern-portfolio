@@ -2,6 +2,8 @@
 //import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import ToggleMenu from "@/app/ui/home/toggle-menu";
+
 
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
@@ -18,7 +20,7 @@ export const Navigation: React.FC = () => {
 	}, []);
 
 	return (
-		<header ref={ref}>
+		<header ref={ref} className="text-zinc-400">
 			<div
 				className={`fixed inset-x-0 top-0 z-50 backdrop-blur  duration-200 border-b  ${
 					isIntersecting
@@ -27,22 +29,23 @@ export const Navigation: React.FC = () => {
 				}`}
 			>
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-					<div className="flex justify-between gap-8">
+					<ToggleMenu/>
+					<div className=" justify-between gap-8 hidden sm:flex">
 						<Link
 							href="/about"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="duration-200 hover:text-zinc-100"
 						>
 							About Me
 						</Link>
 						<Link
 							href="/projects"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="duration-200 hover:text-zinc-100"
 						>
 						Projects
 						</Link>
 						<Link
 							href="/contact"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="duration-200 hover:text-zinc-100"
 						>
 							Contact
 						</Link>
@@ -54,6 +57,7 @@ export const Navigation: React.FC = () => {
 					>
 						sarilusblaise
 					</Link>
+					
 				</div>
 			</div>
 		</header>

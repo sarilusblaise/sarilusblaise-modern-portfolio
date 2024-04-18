@@ -35,7 +35,7 @@ export default function HeroTitle() {
         </text>
         <text
         ref={heroTextRef2}
-          className=" text-white text-[7rem]  fill-slate-100 stroke-slate-200 stroke-[3] font-normal tracking-[-2px]"
+          className=" text-white text-[7rem] text-wrap  fill-slate-100 stroke-slate-200 stroke-[3] font-normal tracking-[-2px]"
           x="50%"
           y="50%"
           textAnchor="middle"
