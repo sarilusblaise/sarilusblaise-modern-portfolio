@@ -3,11 +3,14 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import ToggleMenu from "@/app/ui/home/toggle-menu";
+import NavbarMobile from "./navbar-mobile";
 
 
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
+	const isShowNav = useState(false)
+	
 
 	useEffect(() => {
 		if (!ref.current) return;
@@ -21,6 +24,7 @@ export const Navigation: React.FC = () => {
 
 	return (
 		<header ref={ref} className="text-zinc-400">
+			<NavbarMobile/>
 			<div
 				className={`fixed inset-x-0 top-0 z-50 backdrop-blur  duration-200 border-b  ${
 					isIntersecting
