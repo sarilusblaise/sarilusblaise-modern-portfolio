@@ -2,6 +2,8 @@ import "@/app/ui/globals.css";
 import {inter} from '@/app/ui/fonts'
 import { Metadata } from "next";
 import { Navigation } from "@/app/ui/home/navbar";
+import NavbarProvider from "@/app/lib/navbarContext";
+import { useShowNav } from "@/app/lib/navbarContext";
 
 export const metadata: Metadata = {
   title: {
@@ -56,12 +58,15 @@ export default function RootLayout({
     <html lang="en" className={`${inter.className} antialiased`}>
       <head>
       </head>
-      <body
+      <NavbarProvider>
+         <body
         className="bg-black"
       >
         <Navigation/>
         {children}
       </body>
+      </NavbarProvider>
+     
     </html>
   );
 }
