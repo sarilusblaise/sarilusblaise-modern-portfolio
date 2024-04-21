@@ -23,7 +23,7 @@ export const Navigation: React.FC = () => {
 	}, []);
 
 	return (
-		<header ref={ref} className="text-zinc-400">
+		<header ref={ref} className="text-zinc-400 ">
 			<NavbarMobile/>
 			<div
 				className={`fixed inset-x-0 top-0 z-50 backdrop-blur  duration-200 border-b  ${

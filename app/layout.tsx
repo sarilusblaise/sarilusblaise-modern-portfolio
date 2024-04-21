@@ -60,7 +60,7 @@ export default function RootLayout({
       </head>
       <NavbarProvider>
          <body
-        className="bg-black"
+        className="bg-black overflow-x-hidden"
       >
         <Navigation/>
         {children}
