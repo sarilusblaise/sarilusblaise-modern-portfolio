@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useShowNav } from '@/app/lib/navbarContext';
 import Particles from '@/app/ui/home/particule';
+import { socialLink } from '@/app/page';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { CustomEase } from "gsap/CustomEase"
@@ -37,19 +38,28 @@ export default function NavbarMobile() {
 	
 	return (
 	< div className="">
-		<div id='mob-nav'  className=" mob-nav justify-between flex flex-col p-16 items-center absolute z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
-		 <Link href="/about" className="duration-200 hover:text-zinc-100">
-			About Me
-		 </Link>
-		 <Link href="/projects" className="duration-200 hover:text-zinc-100">
-			Projects
-		 </Link>
-		 <Link href="/contact" className="duration-200 hover:text-zinc-100">
-			Contact
+			<div id='mob-nav' className=" mob-nav justify-between flex flex-col p-16 items-center absolute z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
+				
+				<Link href="/about" className="duration-200 hover:text-zinc-100">
+					About Me
 				</Link>
+				<Link href="/projects" className="duration-200 hover:text-zinc-100">
+					Projects
+				</Link>
+				<Link href="/contact" className="duration-200 hover:text-zinc-100">
+					Contact
+				</Link>
+				<ul className="flex items-center justify-center gap-4">
+					{socialLink.map((item, index) => (
+						<Link key={item.href} href={item.href} className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
+							{item.name} |
+						</Link>
+		  ))}
+				</ul>
 				<Particles
         className="absolute inset-0 -z-20 animate-fade-in"
-        quantity={100}
+					quantity={100}
+					
       />
 			</div>
 			<div id='nav-overlay' className='absolute invisible block sm:hidden bg-zinc-950 h-screen w-screen z-[70] top-0 left-0'>

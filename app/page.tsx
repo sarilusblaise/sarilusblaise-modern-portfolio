@@ -13,7 +13,7 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-const socialLink = [
+export const socialLink = [
   { name: "github", href: "/github" },
   { name: "twitter", href: "/twitter" },
   { name: "linkdin", href: "/linkdin" },

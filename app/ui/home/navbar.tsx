@@ -2,6 +2,7 @@
 //import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { useShowNav } from '@/app/lib/navbarContext';
 import ToggleMenu from "@/app/ui/home/toggle-menu";
 import NavbarMobile from "./navbar-mobile";
 
@@ -9,8 +10,7 @@ import NavbarMobile from "./navbar-mobile";
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
-	const isShowNav = useState(false)
-	
+	const {isShowNav, setIsShowNav} = useShowNav()
 
 	useEffect(() => {
 		if (!ref.current) return;
@@ -26,8 +26,8 @@ export const Navigation: React.FC = () => {
 		<header ref={ref} className="text-zinc-400 ">
 			<NavbarMobile/>
 			<div
-				className={`fixed inset-x-0 top-0 z-50 backdrop-blur  duration-200 border-b  ${
-					isIntersecting
+				className={`fixed z-[9999] inset-x-0 top-0 ${!isShowNav && 'backdrop-blur'} sm:backdrop-blur duration-200 border-b  ${
+					isIntersecting && isShowNav
 						? "bg-zinc-900/0 border-transparent"
 						: "bg-zinc-900/500  border-zinc-800 "
 				}`}
