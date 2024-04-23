@@ -27,7 +27,7 @@ export const Navigation: React.FC = () => {
 			<NavbarMobile/>
 			<div
 				className={`fixed z-[9999] inset-x-0 top-0 ${!isShowNav && 'backdrop-blur'} sm:backdrop-blur duration-200 border-b  ${
-					isIntersecting && isShowNav
+					isIntersecting || isShowNav
 						? "bg-zinc-900/0 border-transparent"
 						: "bg-zinc-900/500  border-zinc-800 "
 				}`}

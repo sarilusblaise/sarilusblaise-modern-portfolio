@@ -38,17 +38,18 @@ export default function NavbarMobile() {
 	
 	return (
 	< div className="">
-			<div id='mob-nav' className=" mob-nav justify-between flex flex-col p-16 items-center absolute z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
+			<div id='mob-nav' className=" mob-nav justify-end gap-4 flex flex-col p-8 items-start absolute z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
 				
-				<Link href="/about" className="duration-200 hover:text-zinc-100">
+				<Link href="/about" className="duration-200 hover:text-zinc-100 text-6xl">
 					About Me
 				</Link>
-				<Link href="/projects" className="duration-200 hover:text-zinc-100">
+				<Link href="/projects" className="duration-200 hover:text-zinc-100 text-6xl">
 					Projects
 				</Link>
-				<Link href="/contact" className="duration-200 hover:text-zinc-100">
+				<Link href="/contact" className="duration-200 hover:text-zinc-100 text-6xl">
 					Contact
 				</Link>
+				<Link  href='' className='text-zinc-500'  target="_blank"  rel="noopener noreferrer" locale={false} download> download my cv</Link>
 				<ul className="flex items-center justify-center gap-4">
 					{socialLink.map((item, index) => (
 						<Link key={item.href} href={item.href} className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
@@ -56,6 +57,7 @@ export default function NavbarMobile() {
 						</Link>
 		  ))}
 				</ul>
+				
 				<Particles
         className="absolute inset-0 -z-20 animate-fade-in"
 					quantity={100}
