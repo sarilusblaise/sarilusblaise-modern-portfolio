@@ -14,8 +14,21 @@ export default function NavbarMobile() {
 	useGSAP(() => {
 		CustomEase.create("hop", "M0,0 C0,0 0.187,-0.027 0.281,0.066 0.562,0.347 1,1 1,1 ")
 		gsap.set('#mob-nav', { xPercent: -100 })
-		gsap.set('#nav-overlay', { xPercent: -100 , scaleX:1})
+		gsap.set('#nav-overlay', { xPercent: -100, scaleX: 1 })
+		gsap.set('.mob-link', {  y: 24})
 		if (isShowNav) {
+			gsap.to("#nav-overlay", {
+            keyframes: [
+            {autoAlpha: 1, xPercent: 0, duration: 0.5,ease:'hop'}, // create a 0.5 second gap
+					{ xPercent: 100, delay: 0.25, duration: 0.5, ease:'hop'} 
+				],
+
+			});
+			gsap.to("#mob-nav", { autoAlpha: 1, xPercent: 0, duration: 0, delay: 0.9 })
+			
+			gsap.to(".mob-link", { duration: 0.8, y:0, stagger: 0.3,delay:0.5, ease: "hop"})
+			
+		} else {
 			gsap.to("#nav-overlay", {
             keyframes: [
             {autoAlpha: 1, xPercent: 0, duration: 0.5,ease:'hop'}, // create a 0.5 second gap
@@ -25,9 +38,12 @@ export default function NavbarMobile() {
 
   // ease the entire keyframe block
 			});
-			gsap.to("#mob-nav", {autoAlpha:1, xPercent: 0,delay:0.75, duration:0, })
+					gsap.set('.mob-link', {  y: 0})
+
+			gsap.set('#mob-nav', { xPercent: 0, })
+			gsap.to("#mob-nav", {autoAlpha:0,xPercent:-100,delay:0.5 })
 			
-		} 
+		}
 
 
 	},{ dependencies: [isShowNav]})
@@ -40,17 +56,17 @@ export default function NavbarMobile() {
 	< div className="">
 			<div id='mob-nav' className=" mob-nav justify-end gap-4 flex flex-col p-8 items-start absolute z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
 				
-				<Link href="/about" className="duration-200 hover:text-zinc-100 text-6xl">
+				<Link href="/about" className="duration-200 mob-link   hover:text-zinc-100 text-6xl">
 					About Me
 				</Link>
-				<Link href="/projects" className="duration-200 hover:text-zinc-100 text-6xl">
+				<Link href="/projects" className="duration-200 mob-link  hover:text-zinc-100 text-6xl">
 					Projects
 				</Link>
-				<Link href="/contact" className="duration-200 hover:text-zinc-100 text-6xl">
+				<Link href="/contact" className="duration-200 mob-link  hover:text-zinc-100 text-6xl">
 					Contact
 				</Link>
-				<Link  href='' className='text-zinc-500'  target="_blank"  rel="noopener noreferrer" locale={false} download> download my cv</Link>
-				<ul className="flex items-center justify-center gap-4">
+				<Link  href='' className='text-zinc-500 mob-link '  target="_blank"  rel="noopener noreferrer" locale={false} download> download my cv</Link>
+				<ul className="flex items-center justify-center mob-link  gap-4">
 					{socialLink.map((item, index) => (
 						<Link key={item.href} href={item.href} className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
 							{item.name} |

@@ -4,33 +4,47 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { TextPlugin } from "gsap/TextPlugin";
 import { useShowNav } from '@/app/lib/navbarContext';
+import {CustomEase} from "gsap/CustomEase"
 
-gsap.registerPlugin(useGSAP,TextPlugin);
+gsap.registerPlugin(useGSAP,CustomEase);
 export default function ToggleMenu() {
-  const {isShowNav, setIsShowNav} = useShowNav()
+  const { isShowNav, setIsShowNav } = useShowNav()
+  CustomEase.create("hop", "M0,0 C0,0 0.187,-0.027 0.281,0.066 0.562,0.347 1,1 1,1 ")
   useGSAP(()=>{
     //gsap.to(".toggle-bar", {scaleX: 0.2});
-  })
+    if (isShowNav) {
+      gsap.set('#button-close', {rotation:0})
+    gsap.to('#button-close', { rotation: -180, duration:0.5, ease:'power1.inOut'})
+    } else {
+       gsap.set('#button-open', {rotation:0})
+    gsap.to('#button-open', { rotation: 360, duration:0.5, ease:'power1.inOut'})
+    }
+  },{ dependencies: [isShowNav]})
 
-  function handleClick() {
-    setIsShowNav(!isShowNav)
+  function handleOpenNav() {
+    setIsShowNav(true)
+  }
+  function handleCloseNav() {
+    setIsShowNav(false)
   }
   if (!isShowNav) {
     return (
-    <button key='button-open' title='Toggle menu' className='flex flex-col gap-[3px] justify-center items-end sm:hidden bg-gray-700 w-8 h-8 rounded-[50%] p-1' onMouseEnter={() => gsap.to(".toggle-bar", { scaleX: 1.2, ease: "power1.inOut" })} onMouseLeave={() => gsap.to(".toggle-bar", { scaleX: 1, ease: "power1.inOut" })} onClick={() => handleClick()}>
+      <button className='sm:hidden' onMouseEnter={() => gsap.to(".toggle-bar", { scaleX: 1.2, ease: "power1.inOut" })} onMouseLeave={() => gsap.to(".toggle-bar", { scaleX: 1, ease: "power1.inOut" })} onClick={() => handleOpenNav()}>
+        <div id='button-open' key='button-open'  title='Toggle menu' className='flex flex-col gap-[3px] justify-center items-end  bg-gray-700 w-8 h-8 rounded-[50%] p-1' >
       
-        <div className='w-[80%]  bg-slate-300 h-[2.5px]'></div>
+        <div  className='w-[80%]  bg-slate-300 h-[2.5px]'></div>
         <div className='w-[60%] toggle-bar bg-slate-300 h-[2px]'></div>
         <div className='w-[80%] bg-slate-300 h-[2.5px]'></div>
-    </button> 
+    </div>
+     </button>
   )
   }
   return (
     
-    <button key='button-close' className='sm:hidden' title='Toggle menu' >
-      <div className=' flex relative flex-col gap-[3px] justify-center items-center  bg-gray-700 w-8 h-8 rounded-[50%] p-1'>
-        <div className='w-[70%] absolute  bg-slate-300 h-[1.5px] rotate-45'></div>
-					<div className='w-[70%] absolute  bg-slate-300 h-[1.5px] -rotate-45'></div>
+    <button key='button-close'  className='sm:hidden' title='Toggle menu' onClick={() => handleCloseNav()} >
+      <div id='button-close' className=' flex relative flex-col gap-[3px] justify-center items-center  bg-gray-700 w-8 h-8 rounded-[50%] p-1'>
+        <div className='w-[60%] absolute  bg-slate-300 h-[1.5px] rotate-45'></div>
+					<div className='w-[60%] absolute  bg-slate-300 h-[1.5px] -rotate-45'></div>
       </div>
 					
 				    </button>
