@@ -1,11 +1,23 @@
+'use client'
 import "@/app/ui/globals.css";
 import {inter} from '@/app/ui/fonts'
 import { Metadata } from "next";
 import { Navigation } from "@/app/ui/home/navbar";
-import NavbarProvider from "@/app/lib/navbarContext";
-import { useShowNav } from "@/app/lib/navbarContext";
+import React from 'react'
+import { useState, createContext, useContext } from 'react'
 
-export const metadata: Metadata = {
+// type for context provider
+type navToggleStateType = { isShowNav: boolean, setIsShowNav: React.Dispatch<React.SetStateAction<boolean>> }
+const navToggleState:navToggleStateType = {isShowNav: false, setIsShowNav:()=> false }
+const navToggleContext = createContext<navToggleStateType>(navToggleState)
+
+// custom hook 
+export function useShowNav(){
+    return useContext(navToggleContext)
+}
+
+// metadata for SEO
+ const metadata: Metadata = {
   title: {
     default: "Sarilus Blondy Wadley | Full-stack developer",
     template: "%s | Sarilus Blondy Wadley | Full-stack developer",
@@ -14,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "sarilusblaise.com",
     description:
-      "ull-stack developer focusing in react , nextjs, typescript , firebase, mongodb, expressjs",
+      "Full-stack developer focusing in react , nextjs, typescript , firebase, mongodb, expressjs",
     url: "https://sarilusblaise.com",
     siteName: "sarilusblaise.com",
     images: [
@@ -53,19 +65,20 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+  }) {
+  const [isShowNav, setIsShowNav] = useState<boolean>(false)
   return (
     <html lang="en" className={`${inter.className} antialiased`}>
       <head>
       </head>
-      <NavbarProvider>
+      <navToggleContext.Provider value={{ isShowNav, setIsShowNav }}>
          <body
-        className="bg-black overflow-x-hidden"
+        className={`bg-black overflow-x-hidden ${isShowNav && 'overflow-y-hidden'}`}
       >
         <Navigation/>
         {children}
       </body>
-      </NavbarProvider>
+      </navToggleContext.Provider>
      
     </html>
   );

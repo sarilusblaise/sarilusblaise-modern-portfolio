@@ -2,7 +2,7 @@
 //import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { useShowNav } from '@/app/lib/navbarContext';
+import { useShowNav } from "@/app/layout";
 import ToggleMenu from "@/app/ui/home/toggle-menu";
 import NavbarMobile from "./navbar-mobile";
 
@@ -22,6 +22,9 @@ export const Navigation: React.FC = () => {
 		return () => observer.disconnect();
 	}, []);
 
+	const handleClickLink = () => {
+		setIsShowNav(false)
+	}
 	return (
 		<header ref={ref} className="text-zinc-400 ">
 			<NavbarMobile/>
@@ -38,19 +41,19 @@ export const Navigation: React.FC = () => {
 						<Link
 							href="/about"
 							className="duration-200 hover:text-zinc-100"
-						>
+						onClick={handleClickLink}>
 							About Me
 						</Link>
 						<Link
 							href="/projects"
 							className="duration-200 hover:text-zinc-100"
-						>
+						onClick={handleClickLink}>
 						Projects
 						</Link>
 						<Link
 							href="/contact"
 							className="duration-200 hover:text-zinc-100"
-						>
+						onClick={handleClickLink}>
 							Contact
 						</Link>
 					</div>

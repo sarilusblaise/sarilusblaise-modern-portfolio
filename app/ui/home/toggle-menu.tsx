@@ -3,7 +3,7 @@ import {useRef} from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { TextPlugin } from "gsap/TextPlugin";
-import { useShowNav } from '@/app/lib/navbarContext';
+import { useShowNav } from '@/app/layout';
 import {CustomEase} from "gsap/CustomEase"
 
 gsap.registerPlugin(useGSAP,CustomEase);

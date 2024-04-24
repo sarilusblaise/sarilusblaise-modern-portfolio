@@ -1,22 +1,23 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
-import { useShowNav } from '@/app/lib/navbarContext';
+import { useShowNav } from '@/app/layout';
 import Particles from '@/app/ui/home/particule';
 import { socialLink } from '@/app/page';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { CustomEase } from "gsap/CustomEase"
+import { showNav, hideNav } from '@/app/lib/navUtils';
 
 gsap.registerPlugin(useGSAP,CustomEase);
 export default function NavbarMobile() {
 	const { isShowNav, setIsShowNav } = useShowNav()
 	useGSAP(() => {
 		CustomEase.create("hop", "M0,0 C0,0 0.187,-0.027 0.281,0.066 0.562,0.347 1,1 1,1 ")
-		gsap.set('#mob-nav', { xPercent: -100 })
-		gsap.set('#nav-overlay', { xPercent: -100, scaleX: 1 })
+		//gsap.set('#mob-nav',{ xPercent: -100 })
+		//gsap.set('#nav-overlay', { xPercent: -100, scaleX: 1 })
 		gsap.set('.mob-link', {  y: 24})
-		if (isShowNav) {
+		/*if (isShowNav) {
 			gsap.to("#nav-overlay", {
             keyframes: [
             {autoAlpha: 1, xPercent: 0, duration: 0.5,ease:'hop'}, // create a 0.5 second gap
@@ -26,10 +27,13 @@ export default function NavbarMobile() {
 			});
 			gsap.to("#mob-nav", { autoAlpha: 1, xPercent: 0, duration: 0, delay: 0.9 })
 			
-			gsap.to(".mob-link", { duration: 0.8, y:0, stagger: 0.3,delay:0.5, ease: "hop"})
-			
-		} else {
-			gsap.to("#nav-overlay", {
+			gsap.to(".mob-link", { duration: 0.8, y:0, stagger: 0.3,delay:0.5, ease: "hop"})}*/
+		if (isShowNav) {
+				showNav()
+			}
+	 else {
+			hideNav()
+			/*gsap.to("#nav-overlay", {
             keyframes: [
             {autoAlpha: 1, xPercent: 0, duration: 0.5,ease:'hop'}, // create a 0.5 second gap
 					{ xPercent: 100, delay: 0.25, duration: 0.5, ease:'hop'} // overlap by 0.25 seconds
@@ -41,7 +45,7 @@ export default function NavbarMobile() {
 					gsap.set('.mob-link', {  y: 0})
 
 			gsap.set('#mob-nav', { xPercent: 0, })
-			gsap.to("#mob-nav", {autoAlpha:0,xPercent:-100,delay:0.5 })
+			gsap.to("#mob-nav", {autoAlpha:0,xPercent:-100,delay:0.5 })*/
 			
 		}
 
@@ -54,7 +58,7 @@ export default function NavbarMobile() {
 	
 	return (
 	< div className="">
-			<div id='mob-nav' className=" mob-nav justify-end gap-4 flex flex-col p-8 items-start absolute z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
+			<div id='mob-nav' className=" mob-nav justify-end gap-4 flex flex-col p-8 items-start fixed z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
 				
 				<Link href="/about" className="duration-200 mob-link   hover:text-zinc-100 text-6xl">
 					About Me
@@ -80,7 +84,7 @@ export default function NavbarMobile() {
 					
       />
 			</div>
-			<div id='nav-overlay' className='absolute invisible block sm:hidden bg-zinc-950 h-screen w-screen z-[70] top-0 left-0'>
+			<div id='nav-overlay' className='fixed invisible block sm:hidden bg-zinc-950 h-screen w-screen z-[70] top-0 left-0'>
 
 			</div>
 	</div>
