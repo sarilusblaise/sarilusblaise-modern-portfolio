@@ -73,7 +73,7 @@ export default function RootLayout({
       </head>
       <navToggleContext.Provider value={{ isShowNav, setIsShowNav }}>
          <body
-        className={`bg-black overflow-x-hidden ${isShowNav && 'overflow-y-hidden'}`}
+        className={`bg-black overflow-x-hidden ${isShowNav && 'overflow-y-hidden'} sm:overflow-y-auto`}
       >
         <Navigation/>
         {children}

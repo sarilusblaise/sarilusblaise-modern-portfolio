@@ -49,30 +49,35 @@ export default function NavbarMobile() {
 			
 		}
 
+		
+
 
 	},{ dependencies: [isShowNav]})
 	
 	
-
+	const handleClickLink = () => {
+		setIsShowNav(false)
+			 hideNav()
+		}
   
 	
 	return (
 	< div className="">
 			<div id='mob-nav' className=" mob-nav justify-end gap-4 flex flex-col p-8 items-start fixed z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
 				
-				<Link href="/about" className="duration-200 mob-link   hover:text-zinc-100 text-6xl">
+				<Link href="/about" className="duration-200 mob-link   hover:text-zinc-100 text-6xl" onClick={handleClickLink }>
 					About Me
 				</Link>
-				<Link href="/projects" className="duration-200 mob-link  hover:text-zinc-100 text-6xl">
+				<Link href="/projects" className="duration-200 mob-link  hover:text-zinc-100 text-6xl" onClick={handleClickLink }>
 					Projects
 				</Link>
-				<Link href="/contact" className="duration-200 mob-link  hover:text-zinc-100 text-6xl">
+				<Link href="/contact" className="duration-200 mob-link  hover:text-zinc-100 text-6xl" onClick={handleClickLink }>
 					Contact
 				</Link>
-				<Link  href='' className='text-zinc-500 mob-link '  target="_blank"  rel="noopener noreferrer" locale={false} download> download my cv</Link>
+				<Link  href='' className='text-zinc-500 mob-link '  target="_blank"  rel="noopener noreferrer" locale={false} download onClick={handleClickLink }> download my cv</Link>
 				<ul className="flex items-center justify-center mob-link  gap-4">
 					{socialLink.map((item, index) => (
-						<Link key={item.href} href={item.href} className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
+						<Link key={item.href} href={item.href} className="text-sm duration-500 text-zinc-500 hover:text-zinc-300" onClick={handleClickLink }>
 							{item.name} |
 						</Link>
 		  ))}

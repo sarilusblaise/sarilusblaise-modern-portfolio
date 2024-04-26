@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { useRef } from 'react'
 import { CustomEase } from "gsap/CustomEase"
 
 export function showNav() {
@@ -30,4 +31,20 @@ export function hideNav() {
 			gsap.to("#mob-nav", {autoAlpha:0,xPercent:-100,delay:0.5 })
 			
 }
+
+export const useThrottle = () => {
+	const throttleSeed = useRef < null | any >(null);
+
+	const throttleFunction = useRef((func: () => {}, delay=200) => {
+    if (!throttleSeed.current) {
+      // Call the callback immediately for the first time
+      func();
+      throttleSeed.current = setTimeout(() => {
+        throttleSeed.current = null;
+      }, delay);
+    }
+  });
+
+  return throttleFunction.current;
+};
     
