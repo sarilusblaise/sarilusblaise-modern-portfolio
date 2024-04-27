@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useRef } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 import { CustomEase } from "gsap/CustomEase"
 
 export function showNav() {
@@ -32,22 +32,66 @@ export function hideNav() {
 			
 }
 
-export type CallbackFunction = () => void
-export const useThrottle = (func:CallbackFunction, delay: number = 1000) => {
-  const throttleSeed = useRef<NodeJS.Timeout | null>(null);
 
-  const throttleFunction = useRef<any>((): void => {
-    if (!throttleSeed.current) {
-      // Call the callback immediately for the first time
-      func();
-      throttleSeed.current = setTimeout(() => {
-        throttleSeed.current = null;
+/*export const useThrottle = <T extends (...args: any[]) => void>(
+  handler: T,
+  delay: number
+) => {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const throttledHandler = useCallback((...args: Parameters<T>) => {
+    if (!timeoutRef.current) {
+      handler(...args);
+      timeoutRef.current = setTimeout(() => {
+        timeoutRef.current = null;
       }, delay);
     }
-  });
+  }, [handler, delay]);
 
-  return throttleFunction.current;
+  // Clear the timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  return throttledHandler;
+};*/
+
+export const useThrottle = <T extends (...args: any[]) => void>(
+  handler: T,
+  delay: number
+) => {
+  const isHandlerRunning = useRef(false); // Flag to track if the handler is already running
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const throttledHandler = useCallback((...args: Parameters<T>) => {
+    if (!isHandlerRunning.current) {
+      isHandlerRunning.current = true; // Set the flag to indicate that the handler is running
+      handler(...args);
+      timeoutRef.current = setTimeout(() => {
+        isHandlerRunning.current = false; // Reset the flag after the delay
+      }, delay);
+    }
+  }, [handler, delay]);
+
+  // Clear the timeout and reset the flag on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      isHandlerRunning.current = false; // Reset the flag when unmounting
+    };
+  }, []);
+
+  return throttledHandler;
 };
+
+
+
 
 
 

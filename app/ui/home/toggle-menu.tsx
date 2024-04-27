@@ -23,17 +23,21 @@ export default function ToggleMenu() {
     }
   },{ dependencies: [isShowNav]})
 
-  const  handleOpenNav:CallbackFunction = () => {
+  const  handleOpenNav = () => {
     setIsShowNav(true)
     
   }
-  function handleCloseNav() {
+  const  handleCloseNav = ()=>{
     setIsShowNav(false)
     
   }
+
+  // Throttle the event handler with a delay of 500 milliseconds
+  const throttleOpenNav = useThrottle(handleOpenNav, 5000);
+  const throttleCloseNav = useThrottle(handleCloseNav, 5000);
   if (!isShowNav) {
     return (
-      <button className='sm:hidden' onMouseEnter={() => gsap.to(".toggle-bar", { scaleX: 1.2, ease: "power1.inOut" })} onMouseLeave={() => gsap.to(".toggle-bar", { scaleX: 1, ease: "power1.inOut" })} onClick={() => useThrottle(handleOpenNav,2000)}>
+      <button className='sm:hidden' onMouseEnter={() => gsap.to(".toggle-bar", { scaleX: 1.2, ease: "power1.inOut" })} onMouseLeave={() => gsap.to(".toggle-bar", { scaleX: 1, ease: "power1.inOut" })} onClick={throttleOpenNav}>
         <div id='button-open' key='button-open'  title='Toggle menu' className='flex flex-col gap-[3px] justify-center items-end  bg-gray-700 w-8 h-8 rounded-[50%] p-1' >
       
         <div  className='w-[80%]  bg-slate-300 h-[2.5px]'></div>
@@ -45,7 +49,7 @@ export default function ToggleMenu() {
   }
   return (
     
-    <button key='button-close'  className='sm:hidden' title='Toggle menu' onClick={() => useThrottle(handleCloseNav,2000)} >
+    <button key='button-close'  className='sm:hidden' title='Toggle menu' onClick={throttleCloseNav} >
       <div id='button-close' className=' flex relative flex-col gap-[3px] justify-center items-center  bg-gray-700 w-8 h-8 rounded-[50%] p-1'>
         <div className='w-[60%] absolute  bg-slate-300 h-[1.5px] rotate-45'></div>
 					<div className='w-[60%] absolute  bg-slate-300 h-[1.5px] -rotate-45'></div>
