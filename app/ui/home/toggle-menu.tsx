@@ -4,7 +4,9 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { TextPlugin } from "gsap/TextPlugin";
 import { useShowNav } from '@/app/layout';
-import {CustomEase} from "gsap/CustomEase"
+import { CustomEase } from "gsap/CustomEase"
+import { useThrottle } from '@/app/lib/navUtils';
+import { type CallbackFunction } from '@/app/lib/navUtils';
 
 gsap.registerPlugin(useGSAP,CustomEase);
 export default function ToggleMenu() {
@@ -21,15 +23,17 @@ export default function ToggleMenu() {
     }
   },{ dependencies: [isShowNav]})
 
-  function handleOpenNav() {
+  const  handleOpenNav:CallbackFunction = () => {
     setIsShowNav(true)
+    
   }
   function handleCloseNav() {
     setIsShowNav(false)
+    
   }
   if (!isShowNav) {
     return (
-      <button className='sm:hidden' onMouseEnter={() => gsap.to(".toggle-bar", { scaleX: 1.2, ease: "power1.inOut" })} onMouseLeave={() => gsap.to(".toggle-bar", { scaleX: 1, ease: "power1.inOut" })} onClick={() => handleOpenNav()}>
+      <button className='sm:hidden' onMouseEnter={() => gsap.to(".toggle-bar", { scaleX: 1.2, ease: "power1.inOut" })} onMouseLeave={() => gsap.to(".toggle-bar", { scaleX: 1, ease: "power1.inOut" })} onClick={() => useThrottle(handleOpenNav,2000)}>
         <div id='button-open' key='button-open'  title='Toggle menu' className='flex flex-col gap-[3px] justify-center items-end  bg-gray-700 w-8 h-8 rounded-[50%] p-1' >
       
         <div  className='w-[80%]  bg-slate-300 h-[2.5px]'></div>
@@ -41,7 +45,7 @@ export default function ToggleMenu() {
   }
   return (
     
-    <button key='button-close'  className='sm:hidden' title='Toggle menu' onClick={() => handleCloseNav()} >
+    <button key='button-close'  className='sm:hidden' title='Toggle menu' onClick={() => useThrottle(handleCloseNav,2000)} >
       <div id='button-close' className=' flex relative flex-col gap-[3px] justify-center items-center  bg-gray-700 w-8 h-8 rounded-[50%] p-1'>
         <div className='w-[60%] absolute  bg-slate-300 h-[1.5px] rotate-45'></div>
 					<div className='w-[60%] absolute  bg-slate-300 h-[1.5px] -rotate-45'></div>

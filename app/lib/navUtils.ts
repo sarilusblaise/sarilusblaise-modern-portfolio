@@ -32,10 +32,11 @@ export function hideNav() {
 			
 }
 
-export const useThrottle = () => {
-	const throttleSeed = useRef < null | any >(null);
+export type CallbackFunction = () => void
+export const useThrottle = (func:CallbackFunction, delay: number = 1000) => {
+  const throttleSeed = useRef<NodeJS.Timeout | null>(null);
 
-	const throttleFunction = useRef((func: () => {}, delay=200) => {
+  const throttleFunction = useRef<any>((): void => {
     if (!throttleSeed.current) {
       // Call the callback immediately for the first time
       func();
@@ -47,4 +48,6 @@ export const useThrottle = () => {
 
   return throttleFunction.current;
 };
-    
+
+
+
