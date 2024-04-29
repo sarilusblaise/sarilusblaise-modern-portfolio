@@ -13,7 +13,7 @@ export function showNav() {
 			});
 			gsap.to("#mob-nav", { autoAlpha: 1, xPercent: 0, duration: 0, delay: 0.9 })
 			
-			gsap.to(".mob-link", { duration: 0.8, y:0, stagger: 0.3,delay:0.5, ease: "hop"})
+			gsap.to(".mob-link", { duration: 0.5, y:0, stagger: 0.2,delay:0.5, ease: "hop"})
 
 }
 
