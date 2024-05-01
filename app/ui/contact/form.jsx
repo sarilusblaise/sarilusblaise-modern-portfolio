@@ -28,7 +28,7 @@ export default function ContactForm() {
 			></textarea>
 			<button
 				type='button'
-				className='w-full text-zinc-200 text-xl tracking-wide transition-[background] hover:bg-purple-700 uppercase font-bold block rounded-md px-8 py-4 bg-purple-900'
+				className='w-full text-zinc-200 text-xl tracking-wide transition-[background] hover:bg-purple-700 uppercase font-bold block rounded-md px-8 py-4 bg-sky-700'
 			>
 				send message
 			</button>

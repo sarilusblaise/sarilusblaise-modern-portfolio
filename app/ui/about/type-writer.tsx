@@ -11,7 +11,14 @@ export default function TypeWriter() {
 	const cursorRef = useRef<HTMLSpanElement>(null)
 
   useGSAP(()=>{
-    const words = [ 'create appealing website', 'use API', 'design secure API', 'manage secure database' ]
+    const words = [ "Fullstack Developer",
+    "React Enthusiast",
+    "Next.js Lover",
+    "Firebase lover",
+    "Passionate Learner",
+    "Problem Solver",
+    "Team Player",
+    "Innovative Thinker", ]
 
 		//Main timeline
 		let mainTimeline = gsap.timeline( {
@@ -23,7 +30,7 @@ export default function TypeWriter() {
 			let textTimeline = gsap.timeline( {
 				repeat: 1,
 				yoyo: true,
-				repeatDelay: 3
+				repeatDelay: 0.5
 
 
 			} );
@@ -60,6 +67,6 @@ export default function TypeWriter() {
   }
   )
   return (
-<p className='text-zinc-500 text-3xl'> <span className='text-green-600  font-semibold'>I am a full stack developer</span>  I can <span ref={typeWriterRef}></span><span ref={cursorRef}>|</span></p>
+<p className='text-zinc-500 text-3xl'> <span className=' text-sky-600 font-bold'>I am a</span> <span ref={typeWriterRef} className=''></span><span ref={cursorRef}>|</span></p>
   )
 }
