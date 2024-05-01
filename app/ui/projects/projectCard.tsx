@@ -15,14 +15,14 @@ export default function ProjectCard({name,description,code, demo, stacks}:Projec
         
         <div className='flex flex-row flex-wrap gap-1'>
           {
-            stacks.map((stack)=>{
-              return <div key={stack} className=''>{stack}</div>
+            stacks.map((stack,index)=>{
+              return <div key={stack} className='text-bold text-sky-700'>{stack} {index < stacks.length -1 && '|'}</div>
             })
           }
         </div>
         <div className='flex flex-wrap gap-4'>
-            <Link className='' href={code}>gitHub</Link>
-            <Link className='' href={demo}>demo</Link>
+            <Link className='px-4 py-2 bg-sky-700 rounded-md text-zinc-200 hover:bg-sky-600 transition' href={code}>gitHub</Link>
+            <Link className='px-4 py-2 bg-sky-700 rounded-md text-zinc-200  hover:bg-sky-600 transition' href={demo}>demo</Link>
         </div>
         
     </div>
