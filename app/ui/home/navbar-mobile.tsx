@@ -63,7 +63,7 @@ export default function NavbarMobile() {
 	
 	return (
 	< div className="">
-			<div id='mob-nav' className=" mob-nav justify-end gap-4 flex flex-col p-8 items-start fixed z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
+			<div id='mob-nav' className=" mob-nav justify-end gap-4 flex flex-col p-2 items-start fixed z-[60] w-screen top-0 left-0  h-screen bg-zinc-900 sm:hidden invisible last:backdrop-blur">
 				
 				<Link href="/about" className="duration-200 mob-link   hover:text-zinc-100 text-6xl" onClick={handleClickLink }>
 					About Me
