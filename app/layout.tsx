@@ -69,17 +69,17 @@ export default function RootLayout({
   const [isShowNav, setIsShowNav] = useState<boolean>(false)
   return (
     <html lang="en" className={`${inter.className} antialiased`}>
-      <head>
-      </head>
+      <head></head>
       <navToggleContext.Provider value={{ isShowNav, setIsShowNav }}>
-         <body
-        className={`bg-black overflow-x-hidden ${isShowNav && 'overflow-y-hidden'} sm:overflow-y-auto`}
-      >
-        <Navigation/>
-        {children}
-      </body>
+        <body
+          className={` overflow-x-hidden ${
+            isShowNav && "overflow-y-hidden"
+          } sm:overflow-y-auto`}
+        >
+          <Navigation />
+          {children}
+        </body>
       </navToggleContext.Provider>
-     
     </html>
   );
 }
