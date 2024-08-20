@@ -18,41 +18,38 @@ export default function HeroTitle() {
 
 
   return (
-     <svg
-        className="mt-32"
-        viewBox="0 0 1600 460"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <text
+    <svg
+      className="mt-32"
+      viewBox="0 0 1600 460"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <text
         ref={heroTextRef1}
-          className=" text-zinc-500 text-[9rem] sm:text-[11rem] font-bold fill-zinc-500 stroke-zinc-500 stroke-[3] tracking-[-2px]"
-          x="50%"
-          y="30%"
-          textAnchor="middle"
-        >
-        
+        className=" text-warning text-[9rem] sm:text-[11rem] font-bold fill-warning stroke-warning stroke-[3] tracking-[-2px]"
+        x="50%"
+        y="30%"
+        textAnchor="middle"
+      >
         Full-Stack
-        </text>
-        <text
+      </text>
+      <text
         ref={heroTextRef2}
-          className=" text-white text-[7rem] text-wrap  fill-slate-100 stroke-slate-200 stroke-[3] font-normal tracking-[-2px]"
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-        >
+        className=" text-base-content text-[7rem] text-wrap  fill-base-content stroke-base-content before:stroke-[3] font-normal tracking-[-2px]"
+        x="50%"
+        y="50%"
+        textAnchor="middle"
+      >
         Sarilus BLondy Wadley
-        
-        </text>
-        <text
+      </text>
+      <text
         ref={heroTextRef3}
-          className=" text-zinc-500 text-[9rem] sm:text-[11rem] font-bold fill-zinc-500 stroke-zinc-500 stroke-[3] tracking-[-2px]"
-          x="50%"
-          y="80%"
-          textAnchor="middle"
-        >
-        
+        className=" text-warning text-[9rem] sm:text-[11rem] font-bold fill-warning stroke-warning stroke-[3] tracking-[-2px]"
+        x="50%"
+        y="80%"
+        textAnchor="middle"
+      >
         Developer
-        </text>
-      </svg>
-  )
+      </text>
+    </svg>
+  );
 }

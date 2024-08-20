@@ -368,7 +368,7 @@ export default function Particles({
 				context.current.lineTo(x + radius * Math.cos(angle), y + radius * Math.sin(angle));
 			}
 			context.current.closePath();
-			context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+			context.current.fillStyle = `rgba(252, 211, 77, ${alpha})`;
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 

@@ -62,7 +62,7 @@ export default function NavbarMobile() {
   
 	
 	return (
-    <div className="text-base-content">
+    <div className="text-warning">
       <div
         id="mob-nav"
         className=" mob-nav justify-end gap-4 flex flex-col p-2 items-start fixed z-[60] w-screen top-0 left-0  h-screen bg-base-100 sm:hidden invisible last:backdrop-blur"

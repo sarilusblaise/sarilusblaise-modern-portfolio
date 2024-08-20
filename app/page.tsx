@@ -22,19 +22,18 @@ export const socialLink = [
 
 export default function Home() {
   return (
-    <div className=" flex flex-col items-center justify-center w-screen h-screen overflow-x-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+    <div className=" flex flex-col items-center justify-center w-screen h-screen overflow-x-hidden ">
       <Particles
         className="absolute inset-0 -z-20 animate-fade-in"
         quantity={100}
       />
-      
- <HeroTitle/>
-    
-    
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
+
+      <HeroTitle />
+
+      <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-neutral via-base-content to-neutral" />
       <div className="my-16 animate-fade-in z-10">
         <ul className="flex items-center justify-center gap-4">
-          {socialLink.map((item,index) => (
+          {socialLink.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
