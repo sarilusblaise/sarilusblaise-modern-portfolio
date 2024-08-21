@@ -62,7 +62,7 @@ export default function NavbarMobile() {
   
 	
 	return (
-    <div className="text-warning">
+    <div className="text-warning font-extralight">
       <div
         id="mob-nav"
         className=" mob-nav justify-end gap-4 flex flex-col p-2 items-start fixed z-[60] w-screen top-0 left-0  h-screen bg-base-100 sm:hidden invisible last:backdrop-blur"
@@ -76,7 +76,7 @@ export default function NavbarMobile() {
         </Link>
         <Link
           href="/projects"
-          className="duration-200 mob-link  hover:text-zinc-100 text-6xl"
+          className="duration-200 mob-link  hover: text-6xl"
           onClick={handleClickLink}
         >
           Projects
@@ -90,14 +90,12 @@ export default function NavbarMobile() {
         </Link>
         <Link
           href=""
-          className="text-zinc-500 mob-link "
+          className="btn btn-outline"
           target="_blank"
           rel="noopener noreferrer"
           locale={false}
           download
-          onClick={handleClickLink}
         >
-          {" "}
           download my cv
         </Link>
         <ul className="flex items-center justify-center mob-link  gap-4">
@@ -105,7 +103,7 @@ export default function NavbarMobile() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
+              className="text-sm text-base-content duration-500 transition hover:text-info"
               onClick={handleClickLink}
             >
               {item.name} |
