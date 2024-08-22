@@ -39,6 +39,16 @@ export const Navigation: React.FC = () => {
       >
         <div className="container min-w-full flex flex-row-reverse  items-center justify-between p-4 md:px-16 mx-auto">
           <ToggleMenu />
+          <Link
+            href=""
+            className=" hidden sm:flex btn  btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            locale={false}
+            download
+          >
+            download my cv
+          </Link>
           <div className=" justify-between gap-8 hidden sm:flex">
             <Link
               href="/about"

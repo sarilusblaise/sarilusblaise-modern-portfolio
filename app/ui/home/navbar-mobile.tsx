@@ -90,7 +90,7 @@ export default function NavbarMobile() {
         </Link>
         <Link
           href=""
-          className="btn btn-outline"
+          className="btn btn-secondary duration-200 mob-link"
           target="_blank"
           rel="noopener noreferrer"
           locale={false}
