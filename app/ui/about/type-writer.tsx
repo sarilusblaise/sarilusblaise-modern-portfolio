@@ -67,6 +67,11 @@ export default function TypeWriter() {
   }
   )
   return (
-<p className='text-zinc-500 text-3xl'> <span className=' text-sky-600 font-bold'>I am a</span> <span ref={typeWriterRef} className=''></span><span ref={cursorRef}>|</span></p>
-  )
+    <p className=" text-3xl">
+      {" "}
+      <span className=" font-bold">I am a</span>{" "}
+      <span ref={typeWriterRef} className=""></span>
+      <span ref={cursorRef}>|</span>
+    </p>
+  );
 }
