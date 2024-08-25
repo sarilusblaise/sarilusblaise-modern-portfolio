@@ -77,7 +77,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.className} antialiased`}>
       <navToggleContext.Provider value={{ isShowNav, setIsShowNav }}>
         <body
-          className={` overflow-x-hidden ${
+          className={` overflow-x-hidden text-neutral-400 ${
             isShowNav && "overflow-y-hidden"
           } sm:overflow-y-auto`}
         >

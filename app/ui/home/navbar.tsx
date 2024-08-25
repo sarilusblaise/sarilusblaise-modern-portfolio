@@ -34,7 +34,7 @@ export const Navigation: React.FC = () => {
         } sm:backdrop-blur duration-200 border-b  ${
           isIntersecting || isShowNav
             ? "bg-zinc-900/0 border-transparent"
-            : "bg-zinc-900/500  border-zinc-800 "
+            : "bg-zinc-900/500  border-base-200 "
         }`}
       >
         <div className="container min-w-full flex flex-row-reverse  items-center justify-between p-4 md:px-16 mx-auto">

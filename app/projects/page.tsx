@@ -4,7 +4,7 @@ import ProjectCards from '@/app/ui/projects/projectCards'
 
 export default function ProjectsPage() {
   return (
-    <section className=" flex flex-col items-center   gap-16 p-4 sm:p-8 md:p-16 mt-32">
+    <section className=" flex flex-col items-start   gap-16 p-4 sm:p-8 md:p-16 mt-32">
       <div>
         <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem]  font-bold ">
           Projects

@@ -5,38 +5,23 @@ export default function ProjectCard({name,description,code, demo, stacks}:Projec
 
   
   return (
-    <div
-      key={name}
-      className="
-     border-zinc-700 border-[.25px] border-solid rounded-lg p-4 flex-auto flex flex-col  gap-8 text-lg"
-    >
-      <div>
-        <h3 className="text-3xl font-semibold">{name}</h3>
-        <p className="">{description}</p>
-      </div>
-
-      <div className="flex flex-row flex-wrap gap-1">
-        {stacks.map((stack, index) => {
-          return (
-            <div key={stack} className="text-bold ">
-              {stack} {index < stacks.length - 1 && "|"}
-            </div>
-          );
-        })}
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Link
-          className="px-4 py-2 bg-sky-700 rounded-md  hover:bg-sky-600 transition"
-          href={code}
-        >
-          gitHub
-        </Link>
-        <Link
-          className="px-4 py-2 bg-sky-700 rounded-md   hover:bg-sky-600 transition"
-          href={demo}
-        >
-          demo
-        </Link>
+    <div className="card bg-base-300 w-full sm:w-96  shadow-xl">
+      <div className="card-body">
+        <h2 className="card-title">{name}</h2>
+        <p>{description}</p>
+        <div className="flex flex-row flex-wrap gap-1">
+          {stacks.map((stack, index) => {
+            return (
+              <div key={stack} className="text-bold ">
+                {stack} {index < stacks.length - 1 && "|"}
+              </div>
+            );
+          })}
+        </div>
+        <div className="card-actions justify-start">
+          <button className="btn btn-primary">gitHub</button>
+          <button className="btn btn-primary">demo</button>
+        </div>
       </div>
     </div>
   );
